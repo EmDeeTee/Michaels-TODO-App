@@ -43,7 +43,7 @@ namespace CsTUI {
                 string? name = todoText.Text.ToString();
 
                 _todos.Add(new() { 
-                    Name = name
+                    Content = name
                 });
                 todoText.Text = "";
             };
@@ -51,6 +51,9 @@ namespace CsTUI {
             todoListView.KeyDown += (key) => {
                 if (key.KeyEvent.Key == Key.Space) {
                     _todos[todoListView.SelectedItem].ToggleComplete();
+                }
+                else if (key.KeyEvent.Key == Key.e) {
+                    WindowManager.ShowWindow(WindowManager.WINDOW_TYPE.EDIT, _todos[todoListView.SelectedItem]);
                 }
                 todoListView.SetNeedsDisplay();
                 key.Handled = true;

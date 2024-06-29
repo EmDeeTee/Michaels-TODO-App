@@ -5,8 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CsTUI {
-    internal class Todo {
-        public string? Name { get; init; } = String.Empty;
+    public class Todo {
+        private string? _content;
+        public string? Content {
+            get { return _content; }
+            set { _content = value; } 
+        }
         public bool IsCompleted { get; private set; }
 
         public void ToggleComplete() {
@@ -14,7 +18,7 @@ namespace CsTUI {
         }
 
         public override string ToString() {
-            return _CompletedToString() + " " + Name;
+            return _CompletedToString() + " " + Content;
         }
 
         private string _CompletedToString() {
